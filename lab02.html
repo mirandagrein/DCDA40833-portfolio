@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Experimentation and Evaluation - Miranda Grein | DCDA 40833</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Navigation: Same on every page -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="ai-evaluation.html">AI Evaluation</a></li>
+            <li><a href="tufte-critique.html">Tufte Critique</a></li>
+            <li><a href="tableau-visualization.html">Tableau Viz</a></li>
+            <li><a href="lab5.html">Lab 5</a></li>
+            <li><a href="hometown-map.html">Hometown Map</a></li>
+        </ul>
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <h1>AI Experimentation and Evaluation</h1>
+        <p>Miranda Grein | DCDA 40833</p>
+    </header>
+<main>
+        
+        <section id="welcome">
+            <h2>Introduction</h2>
+           
+            <p>This Lab is focused on the outcomes of AI experimentation and using unconventional methods to explore the limits of AI tools. A common AI tool for students is ChatGPT, where they use its powerful programming to help them study, use guided notes, and ask for help on problems they don’t understand. In this Lab, I will be exploring the use of ChatGPT and its accuracy in Linear Algebra, a common class taken by STEM students, compared to other math tools and math-specific AI platforms such as Solvely.ai.</p>
+            
+        </section>
+        <section id="welcome">
+            <h2>AI Experimentation</h2>
+            <p>
+                While taking Linear Algebra, my instructor gave us permission to use outside software to simplify matrices for homework problems.
+                Simplifying matrices by hand can be time-consuming and is generally only necessary when learning the process during the first few units. For most homework problems, where the learning objective was on steps such as calculating determinants or solving eigenvalue problems, using software to simplify the matrices was an effective way to save time.
+            </p>
+            <p>
+            My instructor recommended Octave Online, as it is a programming-based math tool that executes deterministic algorithms, but I wanted to test how AI, specifically ChatGPT, simplified matrices. The results came back very unusual. While simplifying matrices is the first content we learn and considered the easiest part of Linear Algebra, ChatGPT, would constantly return wrong simplified matrices.    
+            </p>
+            <p>
+                Below is a side-by-side comparison of a matrix given to Octave Online versus ChatGPT to both simplify to RREF. (RREF is a unique, simplified form of a matrix used to solve linear systems.)
+            </p>
+            <figure class="viz-container">
+                <img src="images/Chat1.png" alt="ChatGPT Prompt" width=”30%”>
+            </figure>
+            <figure class="viz-container">
+                <img src="images/Chat3*.png" alt="ChatGPT Prompt" width=”30%”>
+            </figure>
+            <figure class="viz-container">
+                <img src="images/Chat6*.png" alt="ChatGPT Prompt" width=”30%”>
+            </figure>
+            <p>
+                ChatGPT's answer to the prompt given
+            </p>
+            <figure class="viz-container">
+                <img src="images/OCtave6*.png" alt="Octave Prompt" width=”30%”>
+            </figure>
+            <p>
+                Octave Online's answer to the prompt given
+            </p>
+
+            <p>
+                When ChatGPT was prompted with this matrix to simplify, it came up with the wrong RREF and wrong explanation. I found it interesting that it included wrong statements, then statements such as “wait actually” in its code followed by a different way to fix the code. When I asked ChatGPT to explain its process to get this matrix, it doubled-down and reinforced its wrong reasoning.
+            </p>
+            <figure class="viz-container">
+                <img src="images/2Chat1.png" alt="ChatGPT Prompt" width=”30%”>
+            </figure>
+            <p>Finally, when I finally gave ChatGPT the correct RREF of this matrix, it admitted it got it wrong. It suggested it got the simplified matrix wrong by saying, “When I was eliminating entries in column 4 (especially combining multiples of row 4 with rows 1–3), I approximated fractions as decimals too early, which shifted the constants slightly. Your version has more precise decimal results:” (OpenAI, 2026).
+        
+            </p>
+            <p> This explanation is also misleading. ChatGPT used wording that makes the problem seem acceptable using “slightly” and “Your version has more precise.” This wording makes the RREF matrix ChatGPT produced as seemingly still a bit right. This however is not the case. In Linear Algebra, each matrix’s RREF is unique, so the RREF matrix that ChatGPT produced is completely different from the matrix I gave it from the start. So, any additional steps taken on this new matrix would give me a completely wrong answer, thus my homework on this would be a 0%.</p>
+            <figure class="viz-container">
+                <img src="images/3Chat1*.png" alt="ChatGPT Result Prompt" width=”30%”>
+            </figure>
+            <p>
+                My next idea was to use a math-based AI tool to see if there would be more accurate results. I found Solvely.AI, an advertised math AI that I had never used before. I put in the same matrix I gave to AI and the results came back correct. 
+
+            </p>
+            <figure class="viz-container">
+                <img src="images/AI1.png" alt="Solvely Prompt" width=”30%”>
+            </figure>
+            <p>
+                Next, I tried to give it a more complex question which was to find x in a system of linear equations which it also returned correctly. However, once finished with these prompts, it prompted me to pay to continue using this AI tool. ChatGPT when prompted with this more complicated prompt, proceeded to give me a total of 7 different answers to this prompt until I finally gave it the answer. It verified the true answer, but could not show me how to get there other than performing a "guess and check method." However, the specific chat started to glitch out and now, it will not open.
+
+            </p>
+            <figure class="viz-container">
+                <img src="images/2AI1.png" alt="Solvely Prompt" width=”30%”>
+            </figure>
+             <figure class="viz-container">
+                <img src="images/5Chat.png" alt="ChatGPT Result Prompt" width=”30%”>
+            </figure>
+            <p>
+                As shown above, Solvely.ai was able to provide an accurate result to the prompt, while ChatGPT with the same prompt, gave different results and wrong logic.
+            </p>
+        </section>
+        <section id="welcome">
+            <h2>Conclusion</h2>
+           
+            <p>My experiment concluded that AI tools such as ChatGPT that are not specifically trained for math-related questions such as Linear Algebra do very poorly and give false results with false reasoning. Math AI tools such as Solvely.ai that are specifically trained for high level math do significantly better, however they are less accessible because of payment requirements. I found that the best results with these prompts were actually the non-AI math programming tool, Octave Online, and physically simplifying the matrix by hand. It took me a shorter time to solve the problem by hand than it did for me to go back and forth with ChatGPT about what the actual answer was between all 7 different results it provided. 
+            </p>
+            <p>
+                ChatGPT had a bias that identified itself as “actually really solid at linear algebra!” (OpenAI, 2026). This led to most of its responses as overly confident and defending wrong answers and reasonings. A question that emerged that I couldn't answer is why ChatGPT could not identify the issues with its reasoning when prompted a question such as “check this work again.” Most of the time with non-math-related questions, ChatGPT will correctly identify issues it has when prompted that question.
+            </p>
+            <p>
+                In the future, when interacting with AI tools for math-related questions, I would either find a specific math AI tool or avoid them all together in favor for a programming language. The best way to check the AI tools is by asking questions such as, “How does this AI’s answers compare with the real solution,” and “Does this AI consistently produce accurate work and results.”
+            </p>
+        </section>
+        <section id="welcome">
+            <h2>References</h2>
+            <p>Open AI. (2026). ChatGPT (Jan 29 version)[Large Language model]. 
+    </p> <p><a href="https://chat.openai.com/">https://chat.openai.com/</a></p>
+
+
+Solvely.AI. (2026). [AI tool]. Retrieved January 26, 2026
+</p> <p><a href="https://www.solvely.ai">https://www.solvely.ai</a></p>
+         </section>
+
+          <section>
+            <h2>Reflection</h2>
+            <!-- What you learned, what was challenging -->
+            <p><strong>What I learned:</strong> In this lab, I was able to explore the benefits along with the downsides of using AI as a tool. I learned that when using AI for a specific task, the best route is using an AI specifically designed for the subject </p>
+            <p><strong>Challenges:</strong> I found that testing ChatGPT and getting it to reflect on its wrong answers was a challenge I faced in this lab. ChatGPT could not find its errors in some of the more challenging prompts that I gave it. It made it harder for me to identify why ChatGPT's outcomes were that of what it gave me.  </p>
+            <p><strong>Connection to DCDA:</strong> As AI is a widely-used tool in society, this lab helped give me an insight on ways to use AI as a helping hand when facing problems in Digital Culture and Data Analytics. AI can be a useful tool for productivity in these areas. </p>
+        </section>
+        </main>
+
+<footer>
+        <p><a href="https://github.com/mirandagrein/DCDA40833-portfolio">View Repository on GitHub</a></p>
+        <p>&copy; 2026 Miranda Grein | DCDA 40833 | TCU</p>
+    </footer>
+</body>
+</html>
