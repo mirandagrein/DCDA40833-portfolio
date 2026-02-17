@@ -14,7 +14,15 @@
 <body>
     <!-- Navigation: Links to all portfolio pages -->
     <nav>
-        <ul>
+        <!-- Hamburger Menu Button (visible on mobile) -->
+        <button class="menu-toggle" aria-label="Toggle navigation menu">
+            <span class="hamburger"></span>
+            <span class="hamburger"></span>
+            <span class="hamburger"></span>
+        </button>
+
+        <!-- Navigation Menu -->
+        <ul class="nav-menu">
             <li><a href="index.html">Home</a></li>
             <li><a href="lab02.html">AI Evaluation</a></li>
             <li><a href="lab03.html">Tufte Critique</a></li>
@@ -22,6 +30,9 @@
             <li><a href="lab05.html">Lab 5</a></li>
             <li><a href="lab06.html">Hometown Map</a></li>
         </ul>
+
+        <!-- Overlay for drawer (visible when menu is open on mobile) -->
+        <div class="nav-overlay"></div>
     </nav>
 
     <!-- Header: Your name and course info
@@ -124,5 +135,8 @@
         <p><a href="https://github.com/mirandagrein/DCDA40833-portfolio">View Repository on GitHub</a></p>
         <p>&copy; 2026 Miranda Grein | DCDA 40833 | TCU</p>
     </footer>
+
+    <!-- JavaScript for Mobile Drawer Menu -->
+    <script src="js/drawer-menu.js"></script>
 </body>
 </html>

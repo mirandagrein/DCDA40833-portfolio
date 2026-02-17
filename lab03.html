@@ -7,14 +7,32 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+    <!-- Navigation: Same on every page -->
+    <nav>
+        <!-- Hamburger Menu Button (visible on mobile) -->
+        <button class="menu-toggle" aria-label="Toggle navigation menu">
+            <span class="hamburger"></span>
+            <span class="hamburger"></span>
+            <span class="hamburger"></span>
+        </button>
+
+        <!-- Navigation Menu -->
+        <ul class="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="lab02.html">AI Evaluation</a></li>
+            <li><a href="lab03.html">Tufte Critique</a></li>
+            <li><a href="lab04.html">Tableau Viz</a></li>
+            <li><a href="lab05.html">Lab 5</a></li>
+            <li><a href="lab06.html">Hometown Map</a></li>
+        </ul>
+
+        <!-- Overlay for drawer (visible when menu is open on mobile) -->
+        <div class="nav-overlay"></div>
+    </nav>
+
     <header>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="lab02.html">Lab 2: AI Evaluation</a>
-            <a href="lab03.html" class="active">Lab 3: Visualization Critique</a>
-            <a href="lab04.html">Lab 4: Tableau Visualization</a>
-        </nav>
         <h1>Visualization Critique</h1>
+        <p>Miranda Grein | DCDA 40833</p>
     </header>
 
     <main>
@@ -51,7 +69,11 @@
     </main>
 
     <footer>
-        <p>© 2026 Miranda Grein</p>
+        <p><a href="https://github.com/mirandagrein/DCDA40833-portfolio">View Repository on GitHub</a></p>
+        <p>&copy; 2026 Miranda Grein | DCDA 40833 | TCU</p>
     </footer>
+
+    <!-- JavaScript for Mobile Drawer Menu -->
+    <script src="js/drawer-menu.js"></script>
 </body>
 </html>
