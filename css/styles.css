@@ -13,7 +13,23 @@
     --text-color: #333;            /* Dark gray for text */
     --text-secondary: #64748b;     /* Lighter gray for captions */
     --bg-color: #f4f4f4;           /* Light background */
+    --panel-bg: #ffffff;          /* Panels & cards (light mode) */
+    --header-color: #2b9acb;      /* Light blue for H2 headings */
+    --header-underline: #9fd7f2;  /* Lighter blue for underline */
     --white: #ffffff;
+}
+
+/* Dark mode overrides: toggle by adding `dark-mode` class to <body> */
+.dark-mode {
+    --bg-color: #031424;        /* Almost-black navy background */
+    --text-color: #ffffff;      /* White text for contrast */
+    --text-secondary: #b6c7d6;  /* lighter muted text on dark */
+    --primary-color: #0b3b5a;   /* darker navy primary for accents */
+    --secondary-color: #0f4b6b; /* secondary color for borders */
+    --accent-color: #ffb0e9;    /* keep accent for highlights */
+    --panel-bg: #072b40;        /* Panels & cards (dark mode) - blue lighter than bg */
+    --header-color: #7ec0e6;    /* Brighter blue for H2 on dark bg */
+    --header-underline: #4aa0c9;/* Underline blue on dark bg */
 }
 
 /* =========================
@@ -34,6 +50,7 @@ body {
     line-height: 1.6;
     color: var(--text-color);
     background-color: var(--bg-color);
+    transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 /* =========================
@@ -85,6 +102,36 @@ nav {
     padding: 0;
     z-index: 101;
     position: relative;
+}
+
+/* Dark mode toggle button - accessible */
+.dark-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    margin-left: 0.5rem;
+    background: transparent;
+    border: 2px solid rgba(0,0,0,0.08);
+    border-radius: 6px;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.15s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.dark-toggle:focus {
+    outline: 3px solid rgba(90,150,200,0.25);
+}
+
+/* Dark mode specific adjustments for the toggle */
+.dark-mode .dark-toggle {
+    color: var(--white);
+    border-color: rgba(255,255,255,0.12);
+}
+
+.dark-toggle .dm-sr {
+    position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden;
 }
 
 .hamburger {
@@ -168,20 +215,22 @@ main {
 
 /* All sections inside main get consistent styling */
 main section {
-    background-color: white;
+    background-color: var(--panel-bg);
     padding: 2rem;
     margin-bottom: 2rem;       /* Space between sections */
     border-radius: 8px;        /* Rounded corners */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 /* Style h2 headings inside sections */
 main section h2 {
-    color: var(--primary-color);
-    border-bottom: 3px solid var(--secondary-color);
+    color: var(--header-color);
+    border-bottom: 3px solid var(--header-underline);
     padding-bottom: 0.5rem;
     margin-bottom: 1rem;
     font-size: 1.875rem;
+    transition: color 0.2s ease, border-color 0.2s ease;
 }
 
 main section h3 {
@@ -293,7 +342,8 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin: 1.5rem 0;
-    background: white;
+    background: var(--panel-bg);
+    transition: background-color 0.25s ease;
 }
 
 th, td {
@@ -367,13 +417,13 @@ tr:nth-child(even) {
 /* Individual portfolio card styling */
 .portfolio-card {
     display: block;
-    background: white;
+    background: var(--panel-bg);
     border: 2px solid #e2e8f0;
     border-radius: 12px;
     padding: 1.5rem;
     text-decoration: none;
     color: var(--text-color);
-    transition: all 0.3s ease;
+    transition: all 0.3s ease, background-color 0.25s ease, color 0.25s ease;
     position: relative;
 }
 
@@ -446,6 +496,12 @@ footer a:hover {
     /* Show hamburger menu button on mobile */
     .menu-toggle {
         display: flex;
+    }
+
+    /* Show dark toggle on mobile (small) */
+    .dark-toggle {
+        display: inline-flex;
+        margin-left: 0.5rem;
     }
 
     /* Drawer menu styling on mobile */
