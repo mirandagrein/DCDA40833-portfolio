@@ -40,25 +40,83 @@
 
     <!-- Header -->
     <header>
-        <h1>Lab 5</h1>
+        <h1>Vibe coding</h1>
         <p>Miranda Grein | DCDA 40833</p>
     </header>
 
     <main>
         <section id="lab5">
-            <h2>Lab 5</h2>
-            <p>This is a placeholder for Lab 5 content. Replace this with your lab write-up, figures, code snippets, or embedded content. Use the same structure as your other labs: a short introduction, methods or steps, visualizations (inside <code>&lt;figure class="viz-container"&gt;</code>), and a reflection.</p>
+            <h2>Introduction</h2>
+<p>
+  This lab will explore and critically evaluate the collaboration between AI and coding assistance. The usage of AI will be used specifically in aid in coding in Python to debug and to perform data analysis.
+</p>
 
-            <h3>Introduction</h3>
-            <p>Write a short paragraph introducing the lab and its goals.</p>
+<h2>Python for Data Analysis</h2>
+<p>
+  The Tableau Visualization lab previously identified patterns within airline data. For this lab, these patterns will be explored through the use of AI as a coding assistant for data analysis using Python. One pattern that was unclear in the visualization was if longer flights had higher average fare. This led to the research question, “Do longer flights cost more?”
+</p>
+<p>The link to the Google Colab Python code can be found <a>href=https://colab.research.google.com/drive/1zslgGksN6btkp9OW5kpXfkDMa3CE9WE-?usp=sharing here</a> </p>
 
-            <h3>Content</h3>
-            <p>Add your main content here. You can include images using the  folder, tables, or embedded visualizations.</p>
+<p><strong>The first prompt was given to the AI:</strong></p>
+<p>
+  “I am researching the question ‘Do longer flights cost more’ in this airline data set. I want to use linear regression in Python. The X value represents flight distance in miles and the Y value represents flight cost. The column ‘nsmiles’ represents distance and ‘fare’ represents cost.”
+</p>
 
-            
+<p>
+  The AI produced code that imported packages such as pandas, scikit-learn, and matplotlib. It loaded a placeholder dataset from a CSV file and dropped all columns except the relevant ones, and it fit a linear regression model with Y as the fare and X as the flight distance. Lastly, it printed the slope, intercept, and R-squared and generated code for a scatterplot showing the relationship between distance and fare with a regression line.
+</p>
 
-            <h3>Reflection</h3>
-            <p>Summarize what you learned and any next steps.</p>
+<p>
+  The code that the AI produced works by loading the airline dataset into a pandas Data Frame and removing columns so that the relevant variables are only looked at. Flight distance is set as X, the independent variable, and airfare is set as Y, the dependent variable. The model then uses linear regression, which estimates the parameters of a linear equation of the form Y = B0 + B1X + e where B0 is the Y-intercept, B1 is the slope, and e is the standard error. The regression model finds the line that best represents the relationship between flight distance and airfare. This line was also represented with a simple scatterplot visualization.
+</p>
+
+<p>
+  The AI-generated code used common strategies, so I understood most parts. However, it used an alternative method than the ones that I am used to, so my goal was to modify the code to fit a more familiar model to me.
+</p>
+
+<p>
+  After looking over this AI-generated code, I made relevant changes based on the output I needed. I had already loaded the dataset, so I deleted the placeholder dataset that the AI read in. I was also more familiar with a different package, so I modified the AI-generated code to use <code>statsmodel.api</code> instead of scikit-learn. I also chose to use the regression summary output rather than printing individual values because I found the summary easier to interpret. On the scatterplot, I adjusted aesthetics and added a linear equation line. I was then able to look over the summary to extract the pieces of info I needed.
+</p>
+
+<p>
+  The regression results showed a p-value of approximately 0.000 which was less than the significance level of 0.05. This p-value indicated a statistically significant relationship between flight distance and fare. The coefficient for distance was 0.0586, which represents that for each one mile increase in distance, the fare increases by $0.0586. This suggests that longer flights cost more. The R-squared value was .25 which represents that 25% of the variation in fare can be explained by flight distance. This value was reasonable as it is expected that flight distance is not the only factor that influences fares.
+</p>
+
+<p>
+  I found that the AI sped up coding a ton by using a prompt that included contextual information about the goal that was wanted to be produced. Instead of writing the code manually, I was able to check that the code was accurate and get the outputs instantly to interpret and contextualize the results.
+</p>
+
+<p>
+  The AI-generated code had few issues, but one I encountered was in the visualization. The scatterplot had too many pieces of data and the code made the linear regression line the same color as the data point which led to the line being unable to see. I prompted the AI with “I am not seeing the line, can you fix this?” It generated more code that went about plotting in a different method, but still did not show the line correctly. I had to modify the original code to change the color of the line which finally worked. The issue with the AI was that since it was working with data and technically did set a line, it did not see the issue, which was that the color of the line made it impossible to see for viewers.
+</p>
+
+<h2>Debugging with Python</h2>
+<p>The link to the Google Colab Python code can be found <a>href=https://colab.research.google.com/drive/1g17dW9PzYCliQmPl8lfuGvXhEo46GfA6?usp=sharing here</a> </p>
+<p>
+  I had an in-class practice Python project that I was unable to get working in a previous class. The code was supposed to predict college earnings using a machine learning model (Random Forest), but had a few bugs that prevented the code from running.
+</p>
+
+<p><strong>My first prompt was:</strong></p>
+<p>
+  Pasted the code: “There is an error in this code. Take me step by step throughout this code and show me what is missing and how to fix this error.”
+</p>
+
+<p>
+  The response listed why the code showed an error. The error was that the wrong column was in the barplot, so I would need to rename ‘feature’ to ‘features.’ This also happened in other places in the code as well. Another error was that the ‘median_earn’ was misspelt as ‘median_earnings’ and another variable error.
+</p>
+
+<p>
+  When I updated the code, it worked how I expected it to. I found that using AI to debug was very helpful. While initially going over the code, I could not find the issue and spent a while going line by line trying to find the error. Since the errors were very small and detail orientated, AI was able to catch it much quicker than I was. When the AI fixed the code, it was exactly what the code needed and after looking it over, it did not cause any new issues.
+</p>
+
+<h2>Conclusion</h2>
+<p>
+  When using AI to assist in coding, especially within data analytics, the AI must be used as an assistance rather than the full force in leading the code. It is highly important to be able to understand what the AI is doing and how to interpret the data in context. In data analytics specifically, AI could be used to extract conditional probabilities, p-values, coefficients etc., but the human is responsible for interpreting and using these values appropriately and in context. If you do not understand these concepts, and AI makes a mistake while extracting, then the human will not be able to tell what is wrong.
+</p>
+
+<p>
+  I found that vibe coding helped a lot in speeding up the process of coding. It was very useful to add upon when you understand the code it generates. If I did not understand the code, it would have been especially more difficult to work with as each AI-generated code still has some upgrading to do. My guidelines when using AI will be to use AI as a helping agent to increase efficiency, debug, and aid rather than replace. Always using proper citation with AI such as a reference section is necessary.
+</p>
         </section>
     </main>
 
