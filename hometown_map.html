@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_d749faa04a1702cd0ee158a079a45f26 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+    <div style="
+        position: fixed;
+        bottom: 50px;
+        left: 50px;
+        background-color: white;
+        padding: 10px 15px;
+        border-radius: 5px;
+        border: 2px solid #ccc;
+        z-index: 1000;
+        font-family: Arial, sans-serif;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    ">
+        <h4 style="margin: 0 0 8px 0; font-size: 13px; border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+            Location Types
+        </h4>
+        
+            <div style="display: flex; align-items: center; margin: 3px 0;">
+                <i class="fa fa-university" style="color: lightgreen; margin-right: 8px; width: 16px;"></i>
+                <span style="font-size: 11px;">Historical Landmarks</span>
+            </div>
+            
+            <div style="display: flex; align-items: center; margin: 3px 0;">
+                <i class="fa fa-utensils" style="color: darkpurple; margin-right: 8px; width: 16px;"></i>
+                <span style="font-size: 11px;">Resturant</span>
+            </div>
+            
+            <div style="display: flex; align-items: center; margin: 3px 0;">
+                <i class="fa fa-utensils" style="color: darkpurple; margin-right: 8px; width: 16px;"></i>
+                <span style="font-size: 11px;">Restaurant</span>
+            </div>
+            
+            <div style="display: flex; align-items: center; margin: 3px 0;">
+                <i class="fa fa-tree" style="color: darkgreen; margin-right: 8px; width: 16px;"></i>
+                <span style="font-size: 11px;">Park</span>
+            </div>
+            
+            <div style="display: flex; align-items: center; margin: 3px 0;">
+                <i class="fa fa-masks-theater" style="color: darkblue; margin-right: 8px; width: 16px;"></i>
+                <span style="font-size: 11px;">Cultural Sites</span>
+            </div>
+            
+            <div style="display: flex; align-items: center; margin: 3px 0;">
+                <i class="fa fa-shopping-bag" style="color: blue; margin-right: 8px; width: 16px;"></i>
+                <span style="font-size: 11px;">Shopping District</span>
+            </div>
+            
+            <div style="display: flex; align-items: center; margin: 3px 0;">
+                <i class="fa fa-graduation-cap" style="color: cadetblue; margin-right: 8px; width: 16px;"></i>
+                <span style="font-size: 11px;">Educational Institutions</span>
+            </div>
+            
+            <div style="display: flex; align-items: center; margin: 3px 0;">
+                <i class="fa fa-church" style="color: lightblue; margin-right: 8px; width: 16px;"></i>
+                <span style="font-size: 11px;">Places of Worship</span>
+            </div>
+            
+    </div>
+    
+    
+            <div class="folium-map" id="map_d749faa04a1702cd0ee158a079a45f26" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_d749faa04a1702cd0ee158a079a45f26 = L.map(
+                "map_d749faa04a1702cd0ee158a079a45f26",
+                {
+                    center: [29.6617745, -95.2995545],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 10,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_b26d60c629535054cced265efec49145 = L.tileLayer(
+                "https://api.mapbox.com/styles/v1/mirandagrein/cmm3mni2f000901qu8ut8fzx2/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibWlyYW5kYWdyZWluIiwiYSI6ImNtbTBydHAzazAxdHUycXByZzJyancxNXMifQ.BwC0uG86IudObEJcDyI9Lw",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "Mapbox",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_b26d60c629535054cced265efec49145.addTo(map_d749faa04a1702cd0ee158a079a45f26);
+        
+    
+            var feature_group_ec558a9996857cb6afc8dc37409a8df9 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_281ec46cf97df1f1e323a8f7c36d982e = L.marker(
+                [29.303037, -94.782152],
+                {
+}
+            ).addTo(feature_group_ec558a9996857cb6afc8dc37409a8df9);
+        
+    
+            var icon_ae821651d12f712c55a78c1616495a22 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightgreen",
+  "iconColor": "white",
+  "icon": "university",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4be321455956bab5f0658684cdb11ea6 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_0a963cdd0909ef2a1c5fc0d6c51f152d = $(`<div id="html_0a963cdd0909ef2a1c5fc0d6c51f152d" style="width: 100.0%; height: 100.0%;">     <div style="width: 300px; font-family: Arial, sans-serif;">         <h3 style="margin: 0 0 8px 0; color: #333; font-size: 16px; border-bottom: 2px solid lightgreen; padding-bottom: 5px;">             Bishop's Palace         </h3>         <p style="margin: 5px 0; color: #666; font-size: 11px; font-weight: bold;">             📍 Historical Landmarks         </p>         <img src="https://www.galvestonhistory.org/wp-content/uploads/2019/06/182-Bishops-Palace2.jpg"               alt="Bishop's Palace"               style="width: 100%; max-height: 150px; object-fit: cover; border-radius: 5px; margin: 8px 0;"              onerror="this.style.display='none'">         <p style="margin: 8px 0; color: #444; font-size: 12px; line-height: 1.4;">             Architectual historians list the 1892 Bishop's Palace as one of the most significant Victorian residences in the country. Its original Victorian architecture and preserved details make a facinating visit in Galveston's historical district.         </p>     </div>     </div>`)[0];
+                popup_4be321455956bab5f0658684cdb11ea6.setContent(html_0a963cdd0909ef2a1c5fc0d6c51f152d);
+            
+        
+
+        marker_281ec46cf97df1f1e323a8f7c36d982e.bindPopup(popup_4be321455956bab5f0658684cdb11ea6)
+        ;
+
+        
+    
+    
+            marker_281ec46cf97df1f1e323a8f7c36d982e.bindTooltip(
+                `<div>
+                     Bishop's Palace
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_281ec46cf97df1f1e323a8f7c36d982e.setIcon(icon_ae821651d12f712c55a78c1616495a22);
+            
+    
+            feature_group_ec558a9996857cb6afc8dc37409a8df9.addTo(map_d749faa04a1702cd0ee158a079a45f26);
+        
+    
+            var feature_group_6925d784efb870ab512a71d2964e8b5d = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_cb3e1fd35aec5e5e8ea56304de28e6c2 = L.marker(
+                [29.783546, -95.54517],
+                {
+}
+            ).addTo(feature_group_6925d784efb870ab512a71d2964e8b5d);
+        
+    
+            var icon_a887ad092f619c9e5da6ecc0348e8ead = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkpurple",
+  "iconColor": "white",
+  "icon": "utensils",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2e4593927d9ca2aa242863b17ba409b4 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_cbe03215192cb42eb0b17d79b05367dc = $(`<div id="html_cbe03215192cb42eb0b17d79b05367dc" style="width: 100.0%; height: 100.0%;">     <div style="width: 300px; font-family: Arial, sans-serif;">         <h3 style="margin: 0 0 8px 0; color: #333; font-size: 16px; border-bottom: 2px solid darkpurple; padding-bottom: 5px;">             Churrascos         </h3>         <p style="margin: 5px 0; color: #666; font-size: 11px; font-weight: bold;">             📍 Resturant         </p>         <img src="https://churrascos.com/wp-content/uploads/2024/01/bg_csl.webp"               alt="Churrascos"               style="width: 100%; max-height: 150px; object-fit: cover; border-radius: 5px; margin: 8px 0;"              onerror="this.style.display='none'">         <p style="margin: 8px 0; color: #444; font-size: 12px; line-height: 1.4;">             Churrascos is a Latin-American steakhouse unique to Houston. The Filet en Salsa Jalepeno is a personal favorite and the crispy plantain chips and salsa are phenominal.         </p>     </div>     </div>`)[0];
+                popup_2e4593927d9ca2aa242863b17ba409b4.setContent(html_cbe03215192cb42eb0b17d79b05367dc);
+            
+        
+
+        marker_cb3e1fd35aec5e5e8ea56304de28e6c2.bindPopup(popup_2e4593927d9ca2aa242863b17ba409b4)
+        ;
+
+        
+    
+    
+            marker_cb3e1fd35aec5e5e8ea56304de28e6c2.bindTooltip(
+                `<div>
+                     Churrascos
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_cb3e1fd35aec5e5e8ea56304de28e6c2.setIcon(icon_a887ad092f619c9e5da6ecc0348e8ead);
+            
+    
+            var marker_0452e900e006994a84abc44f0f3a38ba = L.marker(
+                [29.758844, -95.405055],
+                {
+}
+            ).addTo(feature_group_6925d784efb870ab512a71d2964e8b5d);
+        
+    
+            var icon_9e6b3227f8f07f03611ce1f1a6201d91 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkpurple",
+  "iconColor": "white",
+  "icon": "utensils",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9a7f3a746d211163dcc8ac5711841d50 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_98e9591ac8295ad5c9e8f0a0ed007f09 = $(`<div id="html_98e9591ac8295ad5c9e8f0a0ed007f09" style="width: 100.0%; height: 100.0%;">     <div style="width: 300px; font-family: Arial, sans-serif;">         <h3 style="margin: 0 0 8px 0; color: #333; font-size: 16px; border-bottom: 2px solid darkpurple; padding-bottom: 5px;">             Annabelle Brasserie         </h3>         <p style="margin: 5px 0; color: #666; font-size: 11px; font-weight: bold;">             📍 Resturant         </p>         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsQ62JxODZb-xttbKqxe_0LbErfaJ346FCZQ&s"               alt="Annabelle Brasserie"               style="width: 100%; max-height: 150px; object-fit: cover; border-radius: 5px; margin: 8px 0;"              onerror="this.style.display='none'">         <p style="margin: 8px 0; color: #444; font-size: 12px; line-height: 1.4;">             Annabelle Brasserie is a French resturant on the side of the Buffalo Bayou river. This local resturant has picturesque views and an exquisite menu.         </p>     </div>     </div>`)[0];
+                popup_9a7f3a746d211163dcc8ac5711841d50.setContent(html_98e9591ac8295ad5c9e8f0a0ed007f09);
+            
+        
+
+        marker_0452e900e006994a84abc44f0f3a38ba.bindPopup(popup_9a7f3a746d211163dcc8ac5711841d50)
+        ;
+
+        
+    
+    
+            marker_0452e900e006994a84abc44f0f3a38ba.bindTooltip(
+                `<div>
+                     Annabelle Brasserie
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0452e900e006994a84abc44f0f3a38ba.setIcon(icon_9e6b3227f8f07f03611ce1f1a6201d91);
+            
+    
+            feature_group_6925d784efb870ab512a71d2964e8b5d.addTo(map_d749faa04a1702cd0ee158a079a45f26);
+        
+    
+            var feature_group_8710feb7d27bbb96a874f4e30cd55ddf = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_94e335a56029395d69317a9a50c9801a = L.marker(
+                [29.763188, -95.376174],
+                {
+}
+            ).addTo(feature_group_8710feb7d27bbb96a874f4e30cd55ddf);
+        
+    
+            var icon_5a7f45d928b2b42d006fbb90f801b9c1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkgreen",
+  "iconColor": "white",
+  "icon": "tree",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_778b1cb8b47ff6f5fceca37e8760f9cc = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_3c705f91a1f5543a29ff6768b7addbee = $(`<div id="html_3c705f91a1f5543a29ff6768b7addbee" style="width: 100.0%; height: 100.0%;">     <div style="width: 300px; font-family: Arial, sans-serif;">         <h3 style="margin: 0 0 8px 0; color: #333; font-size: 16px; border-bottom: 2px solid darkgreen; padding-bottom: 5px;">             Buffalo Bayou Park         </h3>         <p style="margin: 5px 0; color: #666; font-size: 11px; font-weight: bold;">             📍 Park         </p>         <img src="https://media.istockphoto.com/id/181131656/photo/houston-skyline-and-buffalo-bayou.jpg?s=612x612&w=0&k=20&c=MLzU2iHKmC7lm1Pi1ZCqKrnv96bq7ae2vCGKH01jbgE="               alt="Buffalo Bayou Park"               style="width: 100%; max-height: 150px; object-fit: cover; border-radius: 5px; margin: 8px 0;"              onerror="this.style.display='none'">         <p style="margin: 8px 0; color: #444; font-size: 12px; line-height: 1.4;">             Buffalo Bayou Park is a 2.3 mile long park located along the banks of the Buffalo Bayou river overlooking Downtown Houston, Texas. The trails offer a scenic route to walk next to the Houston skyline.         </p>     </div>     </div>`)[0];
+                popup_778b1cb8b47ff6f5fceca37e8760f9cc.setContent(html_3c705f91a1f5543a29ff6768b7addbee);
+            
+        
+
+        marker_94e335a56029395d69317a9a50c9801a.bindPopup(popup_778b1cb8b47ff6f5fceca37e8760f9cc)
+        ;
+
+        
+    
+    
+            marker_94e335a56029395d69317a9a50c9801a.bindTooltip(
+                `<div>
+                     Buffalo Bayou Park
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_94e335a56029395d69317a9a50c9801a.setIcon(icon_5a7f45d928b2b42d006fbb90f801b9c1);
+            
+    
+            feature_group_8710feb7d27bbb96a874f4e30cd55ddf.addTo(map_d749faa04a1702cd0ee158a079a45f26);
+        
+    
+            var feature_group_52705b3e8128f5841942b96b38e7b5a1 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_5fa57cd724d78e6e86c9349d3b5f77af = L.marker(
+                [29.725459, -95.390432],
+                {
+}
+            ).addTo(feature_group_52705b3e8128f5841942b96b38e7b5a1);
+        
+    
+            var icon_daee2eb30f41b767ba1478d4b9c39f66 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkblue",
+  "iconColor": "white",
+  "icon": "masks-theater",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_26a275514c80bd7bc0816905036026ef = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_c68d8d6a78bb11ba823eadb259beb196 = $(`<div id="html_c68d8d6a78bb11ba823eadb259beb196" style="width: 100.0%; height: 100.0%;">     <div style="width: 300px; font-family: Arial, sans-serif;">         <h3 style="margin: 0 0 8px 0; color: #333; font-size: 16px; border-bottom: 2px solid darkblue; padding-bottom: 5px;">             Houston Museum of Fine Arts         </h3>         <p style="margin: 5px 0; color: #666; font-size: 11px; font-weight: bold;">             📍 Cultural Sites         </p>         <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0c/ac/64/54/mfa-facade.jpg?w=900&h=500&s=1"               alt="Houston Museum of Fine Arts"               style="width: 100%; max-height: 150px; object-fit: cover; border-radius: 5px; margin: 8px 0;"              onerror="this.style.display='none'">         <p style="margin: 8px 0; color: #444; font-size: 12px; line-height: 1.4;">             The Houston Museum of Fine Arts is one of the largest U.S. museums, featuring an encyclopedic collection of nearly 80,000 works spanning 5,000 years across six continents. There is a frequently rotating roster of temporary unique exhibitions.         </p>     </div>     </div>`)[0];
+                popup_26a275514c80bd7bc0816905036026ef.setContent(html_c68d8d6a78bb11ba823eadb259beb196);
+            
+        
+
+        marker_5fa57cd724d78e6e86c9349d3b5f77af.bindPopup(popup_26a275514c80bd7bc0816905036026ef)
+        ;
+
+        
+    
+    
+            marker_5fa57cd724d78e6e86c9349d3b5f77af.bindTooltip(
+                `<div>
+                     Houston Museum of Fine Arts
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_5fa57cd724d78e6e86c9349d3b5f77af.setIcon(icon_daee2eb30f41b767ba1478d4b9c39f66);
+            
+    
+            var marker_3be2f56f30acf3114d98985caf102354 = L.marker(
+                [29.71508, -95.389772],
+                {
+}
+            ).addTo(feature_group_52705b3e8128f5841942b96b38e7b5a1);
+        
+    
+            var icon_07f158aa5edfaff51b41c984d11d9921 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkblue",
+  "iconColor": "white",
+  "icon": "masks-theater",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0d593c8841387614a76ed497256971f3 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_b4576a81241e366ef420baf24bbc60a6 = $(`<div id="html_b4576a81241e366ef420baf24bbc60a6" style="width: 100.0%; height: 100.0%;">     <div style="width: 300px; font-family: Arial, sans-serif;">         <h3 style="margin: 0 0 8px 0; color: #333; font-size: 16px; border-bottom: 2px solid darkblue; padding-bottom: 5px;">             Houston Zoo         </h3>         <p style="margin: 5px 0; color: #666; font-size: 11px; font-weight: bold;">             📍 Cultural Sites         </p>         <img src="https://s28164.pcdn.co/files/DJI_0172-1080x720.jpg"               alt="Houston Zoo"               style="width: 100%; max-height: 150px; object-fit: cover; border-radius: 5px; margin: 8px 0;"              onerror="this.style.display='none'">         <p style="margin: 8px 0; color: #444; font-size: 12px; line-height: 1.4;">             The Houston Zoo holds over 600 species of animals. The zoo holds oppertunities for animal experiences and a ton of special exhibits each year.         </p>     </div>     </div>`)[0];
+                popup_0d593c8841387614a76ed497256971f3.setContent(html_b4576a81241e366ef420baf24bbc60a6);
+            
+        
+
+        marker_3be2f56f30acf3114d98985caf102354.bindPopup(popup_0d593c8841387614a76ed497256971f3)
+        ;
+
+        
+    
+    
+            marker_3be2f56f30acf3114d98985caf102354.bindTooltip(
+                `<div>
+                     Houston Zoo
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3be2f56f30acf3114d98985caf102354.setIcon(icon_07f158aa5edfaff51b41c984d11d9921);
+            
+    
+            feature_group_52705b3e8128f5841942b96b38e7b5a1.addTo(map_d749faa04a1702cd0ee158a079a45f26);
+        
+    
+            var feature_group_48e9ed55a96e7bf2e6adbd8298376523 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_4cc9450a05d90ddc57cc8d2200b3aa1b = L.marker(
+                [29.765958, -95.364519],
+                {
+}
+            ).addTo(feature_group_48e9ed55a96e7bf2e6adbd8298376523);
+        
+    
+            var icon_6bac787f21306eda4e72d7c5e47e4270 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "shopping-bag",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6738783320632adffc146e790368503a = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_08271e39a9de61e5fee5ad4e576c3256 = $(`<div id="html_08271e39a9de61e5fee5ad4e576c3256" style="width: 100.0%; height: 100.0%;">     <div style="width: 300px; font-family: Arial, sans-serif;">         <h3 style="margin: 0 0 8px 0; color: #333; font-size: 16px; border-bottom: 2px solid blue; padding-bottom: 5px;">             POST Houston         </h3>         <p style="margin: 5px 0; color: #666; font-size: 11px; font-weight: bold;">             📍 Shopping District         </p>         <img src="https://lovettcommercial.com/Pic.aspx?webid=6640"               alt="POST Houston"               style="width: 100%; max-height: 150px; object-fit: cover; border-radius: 5px; margin: 8px 0;"              onerror="this.style.display='none'">         <p style="margin: 8px 0; color: #444; font-size: 12px; line-height: 1.4;">             The POST Houston features a 5-acre rooftop park, an international food hall, 713 Music Hall, art installations, and shopping areas. The POST represents all that Houston can offer.         </p>     </div>     </div>`)[0];
+                popup_6738783320632adffc146e790368503a.setContent(html_08271e39a9de61e5fee5ad4e576c3256);
+            
+        
+
+        marker_4cc9450a05d90ddc57cc8d2200b3aa1b.bindPopup(popup_6738783320632adffc146e790368503a)
+        ;
+
+        
+    
+    
+            marker_4cc9450a05d90ddc57cc8d2200b3aa1b.bindTooltip(
+                `<div>
+                     POST Houston
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_4cc9450a05d90ddc57cc8d2200b3aa1b.setIcon(icon_6bac787f21306eda4e72d7c5e47e4270);
+            
+    
+            var marker_06e1ae568380e26dc391add4793fa643 = L.marker(
+                [29.308126, -94.791875],
+                {
+}
+            ).addTo(feature_group_48e9ed55a96e7bf2e6adbd8298376523);
+        
+    
+            var icon_6d29af08ef8dd947e048bbbd4c152bef = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "shopping-bag",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_113d5cdd4c0b7dcdb579e27314e58edb = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_8263d324486796c48b55484ba23743ce = $(`<div id="html_8263d324486796c48b55484ba23743ce" style="width: 100.0%; height: 100.0%;">     <div style="width: 300px; font-family: Arial, sans-serif;">         <h3 style="margin: 0 0 8px 0; color: #333; font-size: 16px; border-bottom: 2px solid blue; padding-bottom: 5px;">             The Strand         </h3>         <p style="margin: 5px 0; color: #666; font-size: 11px; font-weight: bold;">             📍 Shopping District         </p>         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXyCNB1RtMY5cOkeZ_zhFkn01UBypyTi4H9A&s"               alt="The Strand"               style="width: 100%; max-height: 150px; object-fit: cover; border-radius: 5px; margin: 8px 0;"              onerror="this.style.display='none'">         <p style="margin: 8px 0; color: #444; font-size: 12px; line-height: 1.4;">             The Strand Historic District is a central hotspot for events, shopping, and resturants in Galveston. These 19th-century Victorian buildings are well preserved and one of my favorite places to shop.         </p>     </div>     </div>`)[0];
+                popup_113d5cdd4c0b7dcdb579e27314e58edb.setContent(html_8263d324486796c48b55484ba23743ce);
+            
+        
+
+        marker_06e1ae568380e26dc391add4793fa643.bindPopup(popup_113d5cdd4c0b7dcdb579e27314e58edb)
+        ;
+
+        
+    
+    
+            marker_06e1ae568380e26dc391add4793fa643.bindTooltip(
+                `<div>
+                     The Strand
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_06e1ae568380e26dc391add4793fa643.setIcon(icon_6d29af08ef8dd947e048bbbd4c152bef);
+            
+    
+            feature_group_48e9ed55a96e7bf2e6adbd8298376523.addTo(map_d749faa04a1702cd0ee158a079a45f26);
+        
+    
+            var feature_group_05a5cfecbcc2b1e0da9d4dcb67ffab83 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_28896dee75867ae7d67a5a1c503bdd7e = L.marker(
+                [29.719042, -95.397761],
+                {
+}
+            ).addTo(feature_group_05a5cfecbcc2b1e0da9d4dcb67ffab83);
+        
+    
+            var icon_d3b1b9c8feab24c2e935fc1e4e551d91 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "cadetblue",
+  "iconColor": "white",
+  "icon": "graduation-cap",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d660dbc51ccc24e8d42033a415f2f7f0 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_c360a37eaa050a9d0ccfcb5f0c4e435f = $(`<div id="html_c360a37eaa050a9d0ccfcb5f0c4e435f" style="width: 100.0%; height: 100.0%;">     <div style="width: 300px; font-family: Arial, sans-serif;">         <h3 style="margin: 0 0 8px 0; color: #333; font-size: 16px; border-bottom: 2px solid cadetblue; padding-bottom: 5px;">             Rice University         </h3>         <p style="margin: 5px 0; color: #666; font-size: 11px; font-weight: bold;">             📍 Educational Institutions         </p>         <img src="https://cdn.britannica.com/84/117884-050-2A107043/Lovett-Hall-Rice-University-Houston-Texas.jpg"               alt="Rice University"               style="width: 100%; max-height: 150px; object-fit: cover; border-radius: 5px; margin: 8px 0;"              onerror="this.style.display='none'">         <p style="margin: 8px 0; color: #444; font-size: 12px; line-height: 1.4;">             Rice University is a research university with beautiful walking trails. There are oppertunities for educational and sports camps which I have participated in.         </p>     </div>     </div>`)[0];
+                popup_d660dbc51ccc24e8d42033a415f2f7f0.setContent(html_c360a37eaa050a9d0ccfcb5f0c4e435f);
+            
+        
+
+        marker_28896dee75867ae7d67a5a1c503bdd7e.bindPopup(popup_d660dbc51ccc24e8d42033a415f2f7f0)
+        ;
+
+        
+    
+    
+            marker_28896dee75867ae7d67a5a1c503bdd7e.bindTooltip(
+                `<div>
+                     Rice University
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_28896dee75867ae7d67a5a1c503bdd7e.setIcon(icon_d3b1b9c8feab24c2e935fc1e4e551d91);
+            
+    
+            feature_group_05a5cfecbcc2b1e0da9d4dcb67ffab83.addTo(map_d749faa04a1702cd0ee158a079a45f26);
+        
+    
+            var feature_group_07760883a094b2525b94c90d6e6f7467 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_c8ae3860650f003d55fbaa8d708ec549 = L.marker(
+                [29.775465, -95.552635],
+                {
+}
+            ).addTo(feature_group_07760883a094b2525b94c90d6e6f7467);
+        
+    
+            var icon_4dcb05ecbc4c683dcbc9add1df2ed740 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "church",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_586ae27224a5dacb6fdb3e689fa47c3f = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_e9a3b7f43e1cf2b059e4727a17d9c6cb = $(`<div id="html_e9a3b7f43e1cf2b059e4727a17d9c6cb" style="width: 100.0%; height: 100.0%;">     <div style="width: 300px; font-family: Arial, sans-serif;">         <h3 style="margin: 0 0 8px 0; color: #333; font-size: 16px; border-bottom: 2px solid lightblue; padding-bottom: 5px;">             Tallowood Baptist Church         </h3>         <p style="margin: 5px 0; color: #666; font-size: 11px; font-weight: bold;">             📍 Places of Worship         </p>         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSt_Ww71LAv2AFrN9DUWBDos6Qfjr6pkiYP_w&s"               alt="Tallowood Baptist Church"               style="width: 100%; max-height: 150px; object-fit: cover; border-radius: 5px; margin: 8px 0;"              onerror="this.style.display='none'">         <p style="margin: 8px 0; color: #444; font-size: 12px; line-height: 1.4;">             Tallowood is a Baptist Church which I have been a member for 13 years. Highlights of my experience at Tallowood have included choir, camps, violin lessons, bible studies, and youth group activities         </p>     </div>     </div>`)[0];
+                popup_586ae27224a5dacb6fdb3e689fa47c3f.setContent(html_e9a3b7f43e1cf2b059e4727a17d9c6cb);
+            
+        
+
+        marker_c8ae3860650f003d55fbaa8d708ec549.bindPopup(popup_586ae27224a5dacb6fdb3e689fa47c3f)
+        ;
+
+        
+    
+    
+            marker_c8ae3860650f003d55fbaa8d708ec549.bindTooltip(
+                `<div>
+                     Tallowood Baptist Church
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_c8ae3860650f003d55fbaa8d708ec549.setIcon(icon_4dcb05ecbc4c683dcbc9add1df2ed740);
+            
+    
+            feature_group_07760883a094b2525b94c90d6e6f7467.addTo(map_d749faa04a1702cd0ee158a079a45f26);
+        
+    
+            var layer_control_cab2073a0d63d44c95bf4513cf494589_layers = {
+                base_layers : {
+                    "Custom Mapbox Style" : tile_layer_b26d60c629535054cced265efec49145,
+                },
+                overlays :  {
+                    "Historical Landmarks" : feature_group_ec558a9996857cb6afc8dc37409a8df9,
+                    "Resturant" : feature_group_6925d784efb870ab512a71d2964e8b5d,
+                    "Park" : feature_group_8710feb7d27bbb96a874f4e30cd55ddf,
+                    "Cultural Sites" : feature_group_52705b3e8128f5841942b96b38e7b5a1,
+                    "Shopping District" : feature_group_48e9ed55a96e7bf2e6adbd8298376523,
+                    "Educational Institutions" : feature_group_05a5cfecbcc2b1e0da9d4dcb67ffab83,
+                    "Places of Worship" : feature_group_07760883a094b2525b94c90d6e6f7467,
+                },
+            };
+            let layer_control_cab2073a0d63d44c95bf4513cf494589 = L.control.layers(
+                layer_control_cab2073a0d63d44c95bf4513cf494589_layers.base_layers,
+                layer_control_cab2073a0d63d44c95bf4513cf494589_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": false,
+  "autoZIndex": true,
+}
+            ).addTo(map_d749faa04a1702cd0ee158a079a45f26);
+
+        
+</script>
+</html>
