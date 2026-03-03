@@ -48,24 +48,41 @@
         <section id="lab6">
             <h2>Hometown Map</h2>
             <p>
-                This lab presents an interactive map highlighting meaningful locations from my hometown. I created the map using Python and Folium, and included markers with short personal reflections.
+                This lab presents an interactive map highlighting meaningful locations from my hometown. I created the map using Python and Folium, and included markers with detailed descriptions.
             </p>
 
-            <p>
-                The interactive Folium map was exported as an HTML file and can be viewed locally or embedded in a notebook. If you want to explore the map interactively, open the exported HTML in a browser or visit the linked notebook (if provided).
+           <img src="images/monetref.jpg" alt="Claude Monet's The Marina at Argenteuil - Design Inspiration" style="max-width: 100%; height: auto; border-radius: 8px; margin: 20px 0;">
+
+           <h3>Design Inspiration</h3>
+
+
+
+        <p>Claude Monet's The Marina at Argenteuil inspired my custom mapbox design. I used Monet's palette with soft blues, greens and gentle warm earth tones. In my basemap, the base water tones come from Monet's soft blues and the land layers mixed different shades of Monet's greens. The labels, text, and accents use the muted colors mixed in the painting. Monet uses soft brush strokes and blended edges in his paintings which I tried to recreate by using low opacities and gentle colors.
+        <h3>Cartographic Challenges</h3>
+            <p>  The main challenge I faced when designing my basemap for multiple scales was ensuring the opacity for the roads did not get too high, so that the text on the roads could still be seen as the text was a lighter color. I had to experiment with the opacity and color as the text font was harder to see in certain combinations. I decided to show very few roads at a higher zoom level so the land and outlines were emphasized. Zooming in more showed more secondary roads and detail-orientated aspects of the map. This was done to especially to slowly introduce more details as too much detail at first proved to have too much noise.
+        </p>
+        <h3>Technical Challenges</h3>
+        <p>I encountered some challenges while using Python to create the interactive map. First, the csv file had inconsistent whitespaces and quotes which I had to fix. I was able to use AI as a tool to identify that this was an issue and clean the csv in a way which would fix the issue. Coding in Python with a new package and using mapbox for the first time caused syntax issues, especially when nesting expressions. Even small formatting errors would prevent the map from rendering correctly. AI tools were helpful for checking the structure, suggesting new code, explaining error messages and adjusting code, and providing corrected formatting examples.
+</p>
+
+
+            <h3>Interactive Hometown Map</h3>
+            <p>Click on the markers to view details about each location.</p>
+            
+            <!-- Embedded Folium Map -->
+            <iframe src="hometown_map.html" 
+                    width="100%" 
+                    height="600" 
+                    style="border: 2px solid #ccc; border-radius: 8px; margin: 20px 0;"
+                    title="Interactive Hometown Map">
+            </iframe>
+            
+            <p style="margin-top: 10px;">
+                <a href="hometown_map.html" target="_blank">Open map in full screen</a> | 
+                <a href="hometown_map.py" target="_blank">View Python source code</a>
             </p>
 
-
-            <h3>How to view the interactive map</h3>
-            <ol>
-                <li>If you have the exported Folium HTML file, open it directly in your browser.</li>
-                <li>Or, run the Python notebook that generates the map (Folium) and display it inline.</li>
-                <li>If you'd like, I can add an embedded iframe of the map here or include the exported HTML file in the repo — tell me which you prefer.</li>
-            </ol>
-
-            <p>
-                Notes: If the interactive map isn't included, the static preview above gives an idea of layout and marker placement. Let me know if you'd like responsive styling adjustments or an embedded interactive map.
-            </p>
+            
         </section>
     </main>
 
