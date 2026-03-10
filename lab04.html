@@ -44,6 +44,20 @@
     </header>
 
     <main>
+
+        <section>
+            <h2>Introduction</h2>
+            <p>This lab explores Tableau Public as a tool to create visualizations to perform exploratory data analysis. I will be exploring the dataset, “Airline Flight Routes in The US [1993-2024],” to identify trends in flight routes, fares, and passenger counts for flights to and from the DFW airport.</p>
+            <h3>Requirements</h3>
+            <ul>
+                <li>Select a dataset to perform exploratory data analysis using Tableau Public
+<li>Identify methods for data preparations for visualizations
+<li>Implement intentional design choices that appeal to viewers</li>
+<li>Identify expected and unexpected patterns, outliers, and questions for further investigation</li>
+<li>Evaluate Tableau in regards to its efficiency in data visualization versus other visualization tools</li>
+</li>
+            </ul>
+        </section>
         <section>
             <h2>Visualization</h2>
             <figure>
@@ -103,9 +117,7 @@
         <section>
             <h2>Analysis</h2>
             
-            <h3>Introduction</h3>
-            <p>This lab uses Tableau Public to explore and analyze a dataset through interactive data visualization. I chose the dataset, “Airline Fight Routes in The US [1993-2024],” to explore trends within route popularity, route fares over time, and average passenger trends, concerning flights to and from the DFW airport.</p>
-
+            
             <h3>Data Preparation</h3>
             <p>The data for this project included year, airport IDs, departure and arrival cities, the distance in miles between the origin and arrival cities, average number of passengers flying this route per day, and average fare. An issue that arose while working with the data was the lack of coordinates for airports in the dataset which is crucial for map visualizations. This was fixed by combining a dataset with longitude and latitude data for each airport code using the excel function, Xlookup. In addition, preparing the data for the map was crucial to represent each route. Some techniques used were creating calculated fields with corresponding longitude and latitude coordinates for departures and arrivals as well as combining duplicate routes into a count system instead of an overlap. The data was also filtered to include routes which solely included departures or arrivals to the DFW airport.</p>
 
@@ -124,6 +136,12 @@
 
             <h3>Tool evaluation</h3>
             <p>Tableau as a visualization tool has many advantages over other softwares. Creating visualizations in tools such as Python and Excel has limits such as less creative freedom with formatting, using different fonts and graphics, and lack of shareable dashboards. Excel has limited formats for visualizations and making complex visualizations with excel functions is a hassle. Python as well has visualizations, but they also lack variety unless paired with additional packages. Still, sharing visualizations in Python is more complex than Tableau. The implementation of dashboards is a highlight for Tableau as it was easy to share and embed in html code. The dashboards made are able to be shared instantaneously and retain their interactivity. However, Tableau had a few downsides that created a few difficulties. One of these was the lack of customization for the map. The colors in the background did not suit the map visualization the way that was envisioned when brainstorming. There were around six preset options, three of which were too cluttered, and the other few clashed with the points and lines. Another issue with Tableau was the implementation of the visualizations within the dashboard. There was a lack of options regarding the size of the dashboard which the first size chosen ended up clashing with the embedded code, so the size had to be changed. However, these downsides do not diminish the advantages of Tableau.</p>
+        </section>
+
+        <section>
+            <h2>Reference</h2>
+            <p>Bhavik Jikadara. (2024). Airline Flight Routes in the US [1993-2024]. Kaggle.</p> 
+            <p> https://www.kaggle.com/datasets/bhavikjikadara/us-airline-flight-routes-and-fares-1993-2024/data</p>
         </section>
     </main>
 
