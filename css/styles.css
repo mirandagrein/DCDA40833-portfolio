@@ -20,6 +20,7 @@
     --header-color: #2b9acb;      /* Light blue for H2 headings */
     --header-underline: #9fd7f2;  /* Lighter blue for underline */
     --white: #ffffff;
+    --deep-blue: #2c5282;         /* Lighter navy blue for h3 and list items */
 }
 
 /* Dark mode overrides: toggle by adding `dark-mode` class to <body> */
@@ -33,6 +34,7 @@
     --panel-bg: #072b40;        /* Panels & cards (dark mode) - blue lighter than bg */
     --header-color: #7ec0e6;    /* Brighter blue for H2 on dark bg */
     --header-underline: #4aa0c9;/* Underline blue on dark bg */
+    --deep-blue: #7ec0e6;       /* Lighter blue for h3 and list items in dark mode */
 }
 
 /* =========================
@@ -243,7 +245,7 @@ main section h2 {
 }
 
 main section h3 {
-    color: var(--text-color);
+    color: var(--deep-blue);
     margin-top: 1.5rem;
     margin-bottom: 0.75rem;
     font-size: 1.5rem;
@@ -264,6 +266,7 @@ main section ol {
 
 main section li {
     margin-bottom: 0.5rem;
+    color: var(--deep-blue);
 }
 
 /* =========================
