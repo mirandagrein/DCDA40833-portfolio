@@ -1,4 +1,6 @@
 
+# Hometown Map AI assisted code to create map.
+
 import pandas as pd
 import folium
 import requests
@@ -8,7 +10,7 @@ import os
 # Set this in your terminal with: export MAPBOX_ACCESS_TOKEN="your_token_here"
 MAPBOX_ACCESS_TOKEN = os.environ.get("MAPBOX_ACCESS_TOKEN", "")
 
-if not MAPBOX_ACCESS_TOKEN:
+if not MAPBOX_ACCESS_TOKEN:             ## error rasied with first run so troubleshooting led to this code
     raise ValueError("MAPBOX_ACCESS_TOKEN environment variable is not set. "
                      "Run: export MAPBOX_ACCESS_TOKEN='your_token_here'")
 
@@ -19,10 +21,11 @@ MAPBOX_TILE_URL = f"https://api.mapbox.com/styles/v1/{MAPBOX_STYLE_ID}/tiles/256
 CSV_FILE_PATH = os.path.expanduser("~/Downloads/Hometown.csv")
 OUTPUT_HTML_FILE = "hometown_map.html"
 
-# Map center (Houston, TX area - will be adjusted based on data)
+# Map center HTX
 DEFAULT_CENTER = [29.7604, -95.3698]
 DEFAULT_ZOOM = 10
 
+##personalization of the different categories and icons
 
 LOCATION_STYLES = {
     "Historical Landmarks": {"color": "lightgreen", "icon": "university", "prefix": "fa"},
@@ -102,7 +105,7 @@ def read_csv_file(filepath):
         print(f" Error reading CSV file: {e}")
         raise
 
-
+#mapbox geocoding API used to get coordinates for the addresses in the CSV file. I had issues with some addresses not geocoding properly, error handling and reporting to identify which addresses were problematic.
 def geocode_address(address, access_token):
     """
     Geocode an address using the Mapbox Geocoding API.
@@ -135,6 +138,8 @@ def geocode_address(address, access_token):
         else:
             print(f" No geocoding results for: {address}")
             return None
+
+            #cont geocoding errors
             
     except requests.exceptions.RequestException as e:
         print(f"Geocoding error for '{address}': {e}")
@@ -175,7 +180,7 @@ def geocode_all_locations(df, access_token):
     df["Latitude"] = latitudes
     df["Longitude"] = longitudes
     
-    # Report success rate
+# Report success rate
     success_count = df["Latitude"].notna().sum()
     print(f"\n  Successfully geocoded {success_count}/{len(df)} locations")
     
@@ -231,7 +236,7 @@ def create_popup_html(name, description, image_url, location_type):
     """
     return html
 
-
+#Folium map with custom mapbox
 def create_map(df):
     """
     Create a Folium map with custom Mapbox basemap and markers.
@@ -244,27 +249,27 @@ def create_map(df):
     """
     print("\n  Creating interactive map...")
     
-    # Filter out locations without coordinates
+#Filter out locations without coordinates
     df_valid = df.dropna(subset=["Latitude", "Longitude"])
     
     if df_valid.empty:
         print(" No valid coordinates found. Cannot create map.")
         return None
     
-    # Calculate map center based on average of all coordinates
+    #Calculate map center based on average of all coordinates
     center_lat = df_valid["Latitude"].mean()
     center_lon = df_valid["Longitude"].mean()
     
     print(f"   Map center: ({center_lat:.4f}, {center_lon:.4f})")
     
-    # Create the base map with custom Mapbox tiles
+#Create the base map with custom Mapbox tiles
     m = folium.Map(
         location=[center_lat, center_lon],
         zoom_start=DEFAULT_ZOOM,
         tiles=None  # We'll add custom tiles
     )
     
-    # Add custom Mapbox tile layer
+    #Add custom Mapbox tile layer
     folium.TileLayer(
         tiles=MAPBOX_TILE_URL,
         attr="Mapbox",
