@@ -36,7 +36,7 @@
     --header-underline: #4aa0c9;/* Underline blue on dark bg */
     --deep-blue: #7ec0e6;       /* Lighter blue for h3 and list items in dark mode */
 }
-
+        /* Changed text colors and bakground color to shades of blue.
 /* =========================
    Basic Reset & Typography
    ========================= */
@@ -57,9 +57,10 @@ body {
     background-color: var(--bg-color);
     transition: background-color 0.25s ease, color 0.25s ease;
 }
-
+/* Changed fonts to create a specific atmosphere
+I was inspired by the custom map to create an aesthetic similar to the map's theme */
 h1, h2, h3 {
-    font-family: Didot, 'Cardo', serif;
+    font-family: Didot, 'Cardo', serif;  
 }
 
 /* =========================

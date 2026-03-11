@@ -2,6 +2,9 @@
  * Dark mode toggle
  * Persists user preference in localStorage and respects system preference on first visit
  */
+
+//AI assisted dark mode toggle.
+
 document.addEventListener('DOMContentLoaded', function () {
   const STORAGE_KEY = 'dcda-dark-mode';
   const body = document.body;
@@ -13,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const stored = localStorage.getItem(STORAGE_KEY);
   if (stored === 'dark') {
     body.classList.add('dark-mode');
-    toggle.setAttribute('aria-pressed', 'true');
+    toggle.setAttribute('aria-pressed', 'true');    //reads storage preference to keep default
   } else if (stored === 'light') {
     body.classList.remove('dark-mode');
     toggle.setAttribute('aria-pressed', 'false');
@@ -34,10 +37,10 @@ document.addEventListener('DOMContentLoaded', function () {
       toggle.setAttribute('aria-pressed', 'true');
       localStorage.setItem(STORAGE_KEY, 'dark');
     } else {
-      body.classList.remove('dark-mode');
+      body.classList.remove('dark-mode');             
       toggle.setAttribute('aria-pressed', 'false');
       localStorage.setItem(STORAGE_KEY, 'light');
-    }
+    }   
   }
 
   toggle.addEventListener('click', function () {

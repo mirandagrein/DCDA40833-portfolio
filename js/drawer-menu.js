@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
         link.addEventListener('click', closeMenu);
     });
 
-    // Close menu on escape key press
+                // Close menu on escape key press
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && navMenu.classList.contains('active')) {
             closeMenu();
