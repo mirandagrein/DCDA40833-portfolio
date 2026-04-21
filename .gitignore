@@ -34,3 +34,4 @@ __pycache__/
 # Do NOT ignore these:
 !images/.gitkeep
 archive/
+datafestnotebook.ipynb
